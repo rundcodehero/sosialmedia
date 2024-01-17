@@ -38,7 +38,7 @@ permissions:
 
 jobs:
   Analysis:
-    runs-on: runner-gcp-1
+    runs-on: self-hosted
 
     steps:
       - name: Analyze with SonarQube
