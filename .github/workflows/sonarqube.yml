@@ -16,8 +16,12 @@ jobs:
     environment: test
 
     steps:
+      - uses: actions/checkout@v3
+        with:
+        # Disabling shallow clones is recommended for improving the relevancy of reporting
+          fetch-depth: 0
       - name: Analyze with SonarQube
-        uses: SonarSource/sonarqube-scan-action@v1.1.0
+        uses: SonarSource/sonarqube-scan-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on SonarQube, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
