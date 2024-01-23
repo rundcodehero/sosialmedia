@@ -15,7 +15,6 @@ jobs:
     environment: test
     env:
         image: rundcode/jenkins-sosialmedia
-        tag: $GITHUB_SHA
       
     steps:
     - name: Checkout Repository
@@ -28,7 +27,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
           
     - name: Build Docker Image
-      run: docker build -t $image:$tag .
+      run: docker build -t $image:$GITHUB_SHA .
 
     - name: Push Docker Image
-      run: docker push $image:$tag
+      run: docker push $image:$GITHUB_SHA
